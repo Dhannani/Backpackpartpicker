@@ -22,9 +22,9 @@ export default class UserTableRow extends Component {
     render() {
         return (
             <tr>
-                <td>{this.props.obj.name}</td>
+                <td>{this.props.obj.username}</td>
                 <td>{this.props.obj.email}</td>
-                <td>{this.props.obj.rollno}</td>
+                <td>{this.props.obj.password}</td>
                 <td>
                     <Link className="edit-link" to={"/edit-user/" + this.props.obj._id}>
                         Edit

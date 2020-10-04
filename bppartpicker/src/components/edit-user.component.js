@@ -10,14 +10,14 @@ export default class EditUser extends Component {
 
     this.onChangeUserName = this.onChangeUserName.bind(this);
     this.onChangeUserEmail = this.onChangeUserEmail.bind(this);
-    this.onChangeUserRollno = this.onChangeUserRollno.bind(this);
+    this.onChangeUserPassword = this.onChangeUserPassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     // State
     this.state = {
       name: '',
       email: '',
-      rollno: ''
+      password: ''
     }
   }
 
@@ -27,7 +27,7 @@ export default class EditUser extends Component {
         this.setState({
           name: res.data.name,
           email: res.data.email,
-          rollno: res.data.rollno
+          password: res.data.password
         });
       })
       .catch((error) => {
@@ -43,8 +43,8 @@ export default class EditUser extends Component {
     this.setState({ email: e.target.value })
   }
 
-  onChangeUserRollno(e) {
-    this.setState({ rollno: e.target.value })
+  onChangeUserPassword(e) {
+    this.setState({ password: e.target.value })
   }
 
   onSubmit(e) {
@@ -53,7 +53,7 @@ export default class EditUser extends Component {
     const userObject = {
       name: this.state.name,
       email: this.state.email,
-      rollno: this.state.rollno
+      password: this.state.password
     };
 
     axios.put('http://localhost:4000/users/update-user/' + this.props.match.params.id, userObject)
@@ -83,8 +83,8 @@ export default class EditUser extends Component {
         </Form.Group>
 
         <Form.Group controlId="Name">
-          <Form.Label>Roll No</Form.Label>
-          <Form.Control type="text" value={this.state.rollno} onChange={this.onChangeUserRollno} />
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="text" value={this.state.password} onChange={this.onChangeUserPassword} />
         </Form.Group>
 
         <Button variant="danger" size="lg" block="block" type="submit">

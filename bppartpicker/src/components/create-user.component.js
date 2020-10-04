@@ -11,49 +11,49 @@ export default class CreateUser extends Component {
     // Setting up functions
     this.onChangeUserName = this.onChangeUserName.bind(this);
     this.onChangeUserEmail = this.onChangeUserEmail.bind(this);
-    this.onChangeUserRollno = this.onChangeUserRollno.bind(this);
+    this.onChangeUserPassword = this.onChangeUserPassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     // Setting up state
     this.state = {
-      name: '',
+      username: '',
       email: '',
-      rollno: ''
+      password: ''
     }
   }
 
   onChangeUserName(e) {
-    this.setState({ name: e.target.value })
+    this.setState({ username: e.target.value })
   }
 
   onChangeUserEmail(e) {
     this.setState({ email: e.target.value })
   }
 
-  onChangeUserRollno(e) {
-    this.setState({ rollno: e.target.value })
+  onChangeUserPassword(e) {
+    this.setState({ password: e.target.value })
   }
 
   onSubmit(e) {
     e.preventDefault()
 
     const userObject = {
-      name: this.state.name,
+      username: this.state.username,
       email: this.state.email,
-      rollno: this.state.rollno
+      password: this.state.password
     };
     axios.post('http://localhost:4000/users/create-user', userObject)
       .then(res => console.log(res.data));
 
-    this.setState({ name: '', email: '', rollno: '' })
+    this.setState({ username: '', email: '', password: '' })
   }
 
   render() {
     return (<div className="form-wrapper">
       <Form onSubmit={this.onSubmit}>
         <Form.Group controlId="Name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control type="text" value={this.state.name} onChange={this.onChangeUserName} />
+          <Form.Label>Username</Form.Label>
+          <Form.Control type="text" value={this.state.username} onChange={this.onChangeUserName} />
         </Form.Group>
 
         <Form.Group controlId="Email">
@@ -62,8 +62,8 @@ export default class CreateUser extends Component {
         </Form.Group>
 
         <Form.Group controlId="Name">
-          <Form.Label>Roll No</Form.Label>
-          <Form.Control type="text" value={this.state.rollno} onChange={this.onChangeUserRollno} />
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="text" value={this.state.password} onChange={this.onChangeUserPassword} />
         </Form.Group>
 
         <Button variant="danger" size="lg" block="block" type="submit">
