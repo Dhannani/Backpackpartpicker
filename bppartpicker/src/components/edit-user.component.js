@@ -3,14 +3,14 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
-export default class EditStudent extends Component {
+export default class EditUser extends Component {
 
   constructor(props) {
     super(props)
 
-    this.onChangeStudentName = this.onChangeStudentName.bind(this);
-    this.onChangeStudentEmail = this.onChangeStudentEmail.bind(this);
-    this.onChangeStudentRollno = this.onChangeStudentRollno.bind(this);
+    this.onChangeUserName = this.onChangeUserName.bind(this);
+    this.onChangeUserEmail = this.onChangeUserEmail.bind(this);
+    this.onChangeUserRollno = this.onChangeUserRollno.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     // State
@@ -22,7 +22,7 @@ export default class EditStudent extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/students/edit-student/' + this.props.match.params.id)
+    axios.get('http://localhost:4000/users/edit-user/' + this.props.match.params.id)
       .then(res => {
         this.setState({
           name: res.data.name,
@@ -35,37 +35,37 @@ export default class EditStudent extends Component {
       })
   }
 
-  onChangeStudentName(e) {
+  onChangeUserName(e) {
     this.setState({ name: e.target.value })
   }
 
-  onChangeStudentEmail(e) {
+  onChangeUserEmail(e) {
     this.setState({ email: e.target.value })
   }
 
-  onChangeStudentRollno(e) {
+  onChangeUserRollno(e) {
     this.setState({ rollno: e.target.value })
   }
 
   onSubmit(e) {
     e.preventDefault()
 
-    const studentObject = {
+    const userObject = {
       name: this.state.name,
       email: this.state.email,
       rollno: this.state.rollno
     };
 
-    axios.put('http://localhost:4000/students/update-student/' + this.props.match.params.id, studentObject)
+    axios.put('http://localhost:4000/users/update-user/' + this.props.match.params.id, userObject)
       .then((res) => {
         console.log(res.data)
-        console.log('Student successfully updated')
+        console.log('User successfully updated')
       }).catch((error) => {
         console.log(error)
       })
 
-    // Redirect to Student List 
-    this.props.history.push('/student-list')
+    // Redirect to User List 
+    this.props.history.push('/user-list')
   }
 
 
@@ -74,21 +74,21 @@ export default class EditStudent extends Component {
       <Form onSubmit={this.onSubmit}>
         <Form.Group controlId="Name">
           <Form.Label>Name</Form.Label>
-          <Form.Control type="text" value={this.state.name} onChange={this.onChangeStudentName} />
+          <Form.Control type="text" value={this.state.name} onChange={this.onChangeUserName} />
         </Form.Group>
 
         <Form.Group controlId="Email">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" value={this.state.email} onChange={this.onChangeStudentEmail} />
+          <Form.Control type="email" value={this.state.email} onChange={this.onChangeUserEmail} />
         </Form.Group>
 
         <Form.Group controlId="Name">
           <Form.Label>Roll No</Form.Label>
-          <Form.Control type="text" value={this.state.rollno} onChange={this.onChangeStudentRollno} />
+          <Form.Control type="text" value={this.state.rollno} onChange={this.onChangeUserRollno} />
         </Form.Group>
 
         <Button variant="danger" size="lg" block="block" type="submit">
-          Update Student
+          Update User
         </Button>
       </Form>
     </div>);

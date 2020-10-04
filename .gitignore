@@ -141,3 +141,7 @@ MANIFEST
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Database info
+db.js
+database/

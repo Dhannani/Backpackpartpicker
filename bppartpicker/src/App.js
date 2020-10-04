@@ -7,10 +7,11 @@ import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import CreateStudent from "./components/create-student.component";
-import EditStudent from "./components/edit-student.component";
-import StudentList from "./components/student-list.component";
+import CreateUser from "./components/create-user.component";
+import EditUser from "./components/edit-user.component";
+import UserList from "./components/user-list.component";
 
 function App() {
   return (<Router>
@@ -20,27 +21,27 @@ function App() {
           <Container>
 
             <Navbar.Brand>
-              <Link to={"/create-student"} className="nav-link">
+              <Link to={"/create-user"} className="nav-link">
                 React MERN Stack App
               </Link>
             </Navbar.Brand>
 
             <Nav className="justify-content-end">
               <Nav>
-                <Link to={"/create-student"} className="nav-link">
-                  Create Student
+                <Link to={"/create-user"} className="nav-link">
+                  Create User
                 </Link>
               </Nav>
 
               {/* <Nav>
-                <Link to={"/edit-student/:id"} className="nav-link">
-                  Edit Student
+                <Link to={"/edit-user/:id"} className="nav-link">
+                  Edit User
                 </Link>
               </Nav> */}
 
               <Nav>
-                <Link to={"/student-list"} className="nav-link">
-                  Student List
+                <Link to={"/user-list"} className="nav-link">
+                  User List
                 </Link>
               </Nav>
             </Nav>
@@ -54,10 +55,10 @@ function App() {
           <Col md={12}>
             <div className="wrapper">
               <Switch>
-                <Route exact path='/' component={CreateStudent} />
-                <Route path="/create-student" component={CreateStudent} />
-                <Route path="/edit-student/:id" component={EditStudent} />
-                <Route path="/student-list" component={StudentList} />
+                <Route exact path='/' component={CreateUser} />
+                <Route path="/create-user" component={CreateUser} />
+                <Route path="/edit-user/:id" component={EditUser} />
+                <Route path="/user-list" component={UserList} />
               </Switch>
             </div>
           </Col>

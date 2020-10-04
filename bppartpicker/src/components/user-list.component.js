@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
-import StudentTableRow from './StudentTableRow';
+import UserTableRow from './UserTableRow';
 
 
-export default class StudentList extends Component {
+export default class UserList extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      students: []
+      users: []
     };
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/students/')
+    axios.get('http://localhost:4000/users/')
       .then(res => {
         this.setState({
-          students: res.data
+          users: res.data
         });
       })
       .catch((error) => {
@@ -26,8 +26,8 @@ export default class StudentList extends Component {
   }
 
   DataTable() {
-    return this.state.students.map((res, i) => {
-      return <StudentTableRow obj={res} key={i} />;
+    return this.state.users.map((res, i) => {
+      return <UserTableRow obj={res} key={i} />;
     });
   }
 
