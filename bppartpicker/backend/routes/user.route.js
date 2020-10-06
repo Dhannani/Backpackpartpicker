@@ -11,6 +11,7 @@ router.route('/create-user').post((req, res, next) => {
     if (error) {
       return next(error)
     } else {
+      console.log("New user created!")
       console.log(data)
       res.json(data)
     }
@@ -46,8 +47,8 @@ router.route('/update-user/:id').put((req, res, next) => {
     $set: req.body
   }, (error, data) => {
     if (error) {
-      return next(error);
       console.log(error)
+      return next(error);
     } else {
       res.json(data)
       console.log('User updated successfully !')
@@ -61,9 +62,29 @@ router.route('/delete-user/:id').delete((req, res, next) => {
     if (error) {
       return next(error);
     } else {
+      console.log("User deleted")
       res.status(200).json({
         msg: data
       })
+    }
+  })
+})
+
+// Log-in
+router.route('/log-in').get((req, res) => {
+  userSchema.findOne({email: req.query.email, password: req.query.password}, (error, data) => {
+    console.log(req.query.email)
+    console.log(req.query.password)
+    if (error) {
+      return next(error)
+    } else if (data) {
+      console.log("Login successful!");
+      console.log(data)
+      res.json(data)
+    }
+    else {
+      console.log("Invalid email or password")
+      res.json(data)
     }
   })
 })
