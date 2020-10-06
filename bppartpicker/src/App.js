@@ -12,58 +12,59 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CreateUser from "./components/create-user.component";
 import EditUser from "./components/edit-user.component";
 import UserList from "./components/user-list.component";
+import Login from "./components/log-in.component";
 
 function App() {
   return (<Router>
     <div className="App">
       <header className="App-header">
-        <Navbar bg="dark" variant="dark">
+
+        <Navbar bg="light">
           <Container>
-
-            <Navbar.Brand>
-              <Link to={"/create-user"} className="nav-link">
-                React MERN Stack App
-              </Link>
-            </Navbar.Brand>
-
-            <Nav className="justify-content-end">
-              <Nav>
-                <Link to={"/create-user"} className="nav-link">
-                  Create User
+            <Row>
+              <Col>
+                <Row>
+                  <Col>
+                    <Nav className="justify-content-end">
+                      <Nav>
+                        <Link  to={"/create-user"} className="nav-link">
+                          Create User
                 </Link>
-              </Nav>
-
-              {/* <Nav>
-                <Link to={"/edit-user/:id"} className="nav-link">
-                  Edit User
+                      </Nav>
+                      <Nav>
+                        <Link to={"/log-in"} className="nav-link">
+                          Log In
                 </Link>
-              </Nav> */}
+                      </Nav>
 
-              <Nav>
-                <Link to={"/user-list"} className="nav-link">
-                  User List
+                      <Nav>
+                        <Link to={"/user-list"} className="nav-link">
+                          User List
                 </Link>
-              </Nav>
-            </Nav>
+                      </Nav>
+                    </Nav>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col>
+                    <Switch>
+                      <Route exact path='/' component={CreateUser} />
+                      <Route path="/create-user" component={CreateUser} />
+                      <Route path="/log-in" component={Login} />
+                      <Route path="/edit-user/:id" component={EditUser} />
+                      <Route path="/user-list" component={UserList} />
+                    </Switch>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
 
           </Container>
         </Navbar>
       </header>
 
-      <Container>
-        <Row>
-          <Col md={12}>
-            <div className="wrapper">
-              <Switch>
-                <Route exact path='/' component={CreateUser} />
-                <Route path="/create-user" component={CreateUser} />
-                <Route path="/edit-user/:id" component={EditUser} />
-                <Route path="/user-list" component={UserList} />
-              </Switch>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+
     </div>
   </Router>);
 }
