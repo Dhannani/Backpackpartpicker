@@ -15,7 +15,7 @@ export default class EditUser extends Component {
 
     // State
     this.state = {
-      name: '',
+      username: '',
       email: '',
       password: ''
     }
@@ -25,7 +25,7 @@ export default class EditUser extends Component {
     axios.get('http://localhost:4000/users/edit-user/' + this.props.match.params.id)
       .then(res => {
         this.setState({
-          name: res.data.name,
+          username: res.data.username,
           email: res.data.email,
           password: res.data.password
         });
@@ -36,7 +36,7 @@ export default class EditUser extends Component {
   }
 
   onChangeUserName(e) {
-    this.setState({ name: e.target.value })
+    this.setState({ username: e.target.value })
   }
 
   onChangeUserEmail(e) {
@@ -51,7 +51,7 @@ export default class EditUser extends Component {
     e.preventDefault()
 
     const userObject = {
-      name: this.state.name,
+      username: this.state.username,
       email: this.state.email,
       password: this.state.password
     };
@@ -73,8 +73,8 @@ export default class EditUser extends Component {
     return (<div className="form-wrapper">
       <Form onSubmit={this.onSubmit}>
         <Form.Group controlId="Name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control type="text" value={this.state.name} onChange={this.onChangeUserName} />
+          <Form.Label>Username</Form.Label>
+          <Form.Control type="text" value={this.state.username} onChange={this.onChangeUserName} />
         </Form.Group>
 
         <Form.Group controlId="Email">
