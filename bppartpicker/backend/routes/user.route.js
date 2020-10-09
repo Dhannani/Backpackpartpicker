@@ -1,6 +1,7 @@
 let mongoose = require('mongoose'),
   express = require('express'),
-  router = express.Router();
+  router = express.Router(),
+  passport = require('passport')
 
 // User Model
 let userSchema = require('../models/User');
@@ -76,15 +77,16 @@ router.route('/log-in').get((req, res) => {
     console.log(req.query.email)
     console.log(req.query.password)
     if (error) {
+      console.log("error happened")
       return next(error)
-    } else if (data) {
+    } else if (data) {  //login successful
       console.log("Login successful!");
       console.log(data)
-      res.json(data)
+      res.status(200).send('Login Successful!')
     }
-    else {
+    else {  //invalid email/password
       console.log("Invalid email or password")
-      res.json(data)
+      res.status(500).send({message: 'Invalid email or password'})
     }
   })
 })
