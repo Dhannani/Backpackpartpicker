@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import CreateUser from "./components/create-user.component";
@@ -14,6 +15,7 @@ import EditUser from "./components/edit-user.component";
 import UserList from "./components/user-list.component";
 import Login from "./components/log-in.component";
 const createError = require('http-errors');
+const passport    = require('passport');
 
 function App() {
   return (<Router>

@@ -24,7 +24,6 @@ export default class UserTableRow extends Component {
             <tr>
                 <td>{this.props.obj.username}</td>
                 <td>{this.props.obj.email}</td>
-                <td>{this.props.obj.password}</td>
                 <td>
                     <Link className="edit-link" to={"/edit-user/" + this.props.obj._id}>
                         Edit

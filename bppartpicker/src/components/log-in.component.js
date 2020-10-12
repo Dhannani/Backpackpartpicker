@@ -56,8 +56,7 @@ export default class CreateUser extends Component {
           })
         }
         else {
-          console.log("adasdasnsdsdfjn")
-          toast("asda", {
+          toast.warning(res.data, {
             position: toast.POSITION.BOTTOM_CENTER,
             hideProgressBar: true,
           })
