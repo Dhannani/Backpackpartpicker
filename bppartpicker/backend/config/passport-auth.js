@@ -60,7 +60,7 @@ passport.use(
   "login",
   new localStrategy(
     {
-      usernameField: "username",
+      usernameField: "email",
       passwordField: "password",
       session: false,
     },
@@ -68,7 +68,7 @@ passport.use(
       try {
         User.findOne({
           where: {
-            username: username,
+            email: email,
           },
         }).then((user) => {
           if (user === null) {

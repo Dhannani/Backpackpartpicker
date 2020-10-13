@@ -69,31 +69,35 @@ router.route("/delete-user/:id").delete((req, res, next) => {
 });
 
 // Log-in
-router.route("/log-in").get((req, res) => {
-  userSchema.findOne(
-    { email: req.query.email, password: req.query.password },
-    (error, data) => {
-      console.log(req.query.email);
-      console.log(req.query.password);
-      if (error) {
-        console.log("error happened");
-        return next(error);
-      } else if (data) {
-        //login successful
-        console.log("Login successful!");
-        console.log(data);
-        res.status(200).send("Login Successful!");
-      } else {
-        //invalid email/password
-        console.log("Invalid email or password");
-        res.status(201).send("Invalid email or password");
-      }
+router.route("/log-in").get((req, res, next) => {
+  passport.authenticate('login', (err, user, info) => {
+    if (err) {
+      console.log(err);
     }
-  );
+    if (!user) {
+      console.log(info.message);
+      res.send(info.message);
+    } else {
+      req.logIn(user, err => {
+        userSchema.findOne({
+          where: {
+            email: user.email,
+          },
+        }).then(user => {
+          const token = jwt.sign({ id: user.email }, jwtSecret.secret);
+          res.status(200).send({
+            auth: true,
+            token: token,
+            message: 'user found & logged in',
+          });
+        });
+      });
+    }
+  })(req, res, next);
 });
 
 // CREATE User
-router.route("/create").post((req, res, next) => {
+router.route("/create-user").post((req, res, next) => {
   console.log("HERE")
   passport.authenticate("register", (err, user, info) => {
     if (err) {
