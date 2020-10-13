@@ -12,7 +12,7 @@ jwtSecret = require("./jwtConfig");
 bcrypt = require("bcrypt");
 let userSchema = require("../models/User");
 const createError = require('http-errors');
-
+ 
 passport.use(
   "register",
   new localStrategy(
@@ -32,7 +32,7 @@ passport.use(
             if (user != null) {
               console.log(user);
               console.log("email already taken");
-              return done(null, null);
+              return done(null, false,  { message: 'username already taken' });
             } else {
               console.log("creating user...");
               bcrypt

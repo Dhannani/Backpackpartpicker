@@ -3,9 +3,11 @@ let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
 let dbConfig = require('./database/db');
-
+let createError = require('http-errors');
 // Express Route
 const userRoute = require('../backend/routes/user.route')
+require("../backend/config/passport-auth");
+let passport = require("passport");
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
@@ -29,6 +31,10 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 app.use('/users', userRoute)
 
+//FIX THIS LATER
+
+app.use(passport.initialize());
+
 
 // PORT
 const port = process.env.PORT || 4000;
@@ -39,6 +45,10 @@ const server = app.listen(port, () => {
 // 404 Error
 app.use((req, res, next) => {
   next(createError(404));
+});
+
+app.use((req, res, next) => {
+  next(createError(401));
 });
 
 app.use(function (err, req, res, next) {

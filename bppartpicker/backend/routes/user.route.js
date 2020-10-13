@@ -3,22 +3,26 @@ let mongoose = require("mongoose"),
   router = express.Router(),
   passport = require("passport");
 router.use(passport.initialize());
+
 require("../config/passport-auth");
 // User Model
 let userSchema = require("../models/User");
+let app = express()
 
 const createError = require('http-errors');
 
-// READ Users
-router.route("/").get((req, res) => {
-  userSchema.find((error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.json(data);
-    }
+// READ Users 
+router.route("/")
+  .get((req, res) => {
+    userSchema.find((error, data) => {
+      if (error) {
+        return next(error);
+      } else {
+        res.json(data);
+      }
+    });
   });
-});
+
 
 // Get Single User
 router.route("/edit-user/:id").get((req, res) => {
@@ -89,19 +93,47 @@ router.route("/log-in").get((req, res) => {
 });
 
 // CREATE User
-router.route("/create-user").post(
-  passport.authenticate("register", {
-    failureRedirect: "/login",
-  }),
-  (req, res) => {
-    console.log("exited authenticate")
-    if (res) {
-      console.log("asdasdasd");
-      res.send("User Created!");
-    } else {
-      console.log("YOLO");
+router.route("/create").post((req, res, next) => {
+  console.log("HERE")
+  passport.authenticate("register", (err, user, info) => {
+    if (err) {
+      console.log(err);
     }
-  }
-);
+    if (user) {
+      console.log("SUCCESS");
+      res.status(200).send("user was created bad boy")
+    } else {
+      console.log("we in the ELSE BRUV")
+      res.status(200).send("username exists already mate");
+    }
+  })(req,res,next);
+});
+  // , { successRedirect: 'http://localhost:3000/login', failureRedirect: 'http://localhost:3000/login' }
+  // console.log("test")
+  // if (res) {
+  //   console.log("asdasdasd");
+  //   res.send("User Created!");
+  // } else {
+  //   console.log("YOLO");
+  // }
+
+
+// router.post("/create-user", function (req, res, next) {
+//   passport.authenticate("register",
+//     // , {successRedirect: 'http://localhost:3000/login', failureRedirect: 'http://localhost:3000/login'}
+//     function (err, user, info) {
+//       if (err) {
+//         console.log(err)
+//       }
+//       if (!user) {
+//         console.log("!user")
+//       }
+//       else {
+//         console.log(
+//           "MADE IT FULE"
+//         )
+//       }
+//     })
+// });
 
 module.exports = router;
