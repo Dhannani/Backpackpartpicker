@@ -1,7 +1,10 @@
 let mongoose = require("mongoose"),
   express = require("express"),
   router = express.Router(),
-  passport = require("passport");
+  passport = require("passport"),
+  jwt = require('jsonwebtoken'),
+  jwtSecret = require("../config/jwtConfig");
+
 router.use(passport.initialize());
 
 require("../config/passport-auth");
@@ -80,9 +83,7 @@ router.route("/log-in").get((req, res, next) => {
     } else {
       req.logIn(user, err => {
         userSchema.findOne({
-          where: {
             email: user.email,
-          },
         }).then(user => {
           const token = jwt.sign({ id: user.email }, jwtSecret.secret);
           res.status(200).send({

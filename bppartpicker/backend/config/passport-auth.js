@@ -64,13 +64,12 @@ passport.use(
       passwordField: "password",
       session: false,
     },
-    (username, password, done) => {
+    (email, password, done) => {
       try {
-        User.findOne({
-          where: {
+        console.log(email)
+        userSchema.findOne({
             email: email,
-          },
-        }).then((user) => {
+        }).then(user => {
           if (user === null) {
             return done(null, false, { message: "bad username" });
           } else {
