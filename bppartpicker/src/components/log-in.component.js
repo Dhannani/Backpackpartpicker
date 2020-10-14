@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import Cookie from 'js-cookie';
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -24,6 +25,17 @@ export default class CreateUser extends Component {
       password: "",
     };
   }
+
+  getPacks() {
+    let accessString = Cookie.get("JWT")
+    console.log(accessString)
+    axios.get('http://localhost:4000/packs/', {headers: {Authorization: 'JWT' + accessString}})
+        .then((res) => {
+            console.log('made it!!')
+        }).catch((error) => {
+            console.log(error)
+        })
+}
 
   onChangeUserName(e) {
     this.setState({ username: e.target.value });
@@ -51,7 +63,7 @@ export default class CreateUser extends Component {
         if (res.status === 200) {
           console.log("lololol")
           console.log(res.data)
-          localStorage.setItem("JWT", res.data.token)
+          Cookie.set("JWT", res.data.token)
           toast.success(res.data.message, {
             position: toast.POSITION.BOTTOM_CENTER,
             hideProgressBar: true,
@@ -93,6 +105,9 @@ export default class CreateUser extends Component {
             Lez Get itttt!
           </Button>
         </Form>
+        <Button variant="danger" size="lg" block="block" onClick={this.getPacks}>
+            PAX
+          </Button>
       </div>
     );
   }

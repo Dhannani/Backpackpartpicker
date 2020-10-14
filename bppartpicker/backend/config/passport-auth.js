@@ -7,9 +7,9 @@ const passport = require("passport"),
   localStrategy = require("passport-local").Strategy,
   JWTstrategy = require("passport-jwt").Strategy,
   ExtractJWT = require("passport-jwt").ExtractJwt,
-  mongoose = require("mongoose");
-jwtSecret = require("./jwtConfig");
-bcrypt = require("bcrypt");
+  mongoose = require("mongoose"),
+  jwtSecret = require("./jwtConfig"),
+  bcrypt = require("bcrypt");
 let userSchema = require("../models/User");
 const createError = require('http-errors');
  
@@ -100,10 +100,9 @@ passport.use(
   "jwt",
   new JWTstrategy(opts, (jwt_payload, done) => {
     try {
+      console.log("in JWT")
       User.findOne({
-        where: {
           username: jwt_payload.id,
-        },
       }).then((user) => {
         if (user) {
           console.log("user found in db in passport");

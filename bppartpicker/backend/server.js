@@ -5,7 +5,8 @@ let bodyParser = require('body-parser');
 let dbConfig = require('./database/db');
 let createError = require('http-errors');
 // Express Route
-const userRoute = require('../backend/routes/user.route')
+const userRoute = require('../backend/routes/user.route'),
+      packsRoute = require('../backend/routes/packs.route');
 require("../backend/config/passport-auth");
 let passport = require("passport");
 
@@ -30,6 +31,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cors());
 app.use('/users', userRoute)
+app.use('/packs', packsRoute)
 
 //FIX THIS LATER
 
