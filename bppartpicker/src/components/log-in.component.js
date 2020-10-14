@@ -50,7 +50,8 @@ export default class CreateUser extends Component {
       .then(function (res) {
         if (res.status === 200) {
           console.log("lololol")
-          console.log(res.data.message)
+          console.log(res.data)
+          localStorage.setItem("JWT", res.data.token)
           toast.success(res.data.message, {
             position: toast.POSITION.BOTTOM_CENTER,
             hideProgressBar: true,
