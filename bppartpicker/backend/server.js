@@ -58,3 +58,25 @@ app.use(function (err, req, res, next) {
   if (!err.statusCode) err.statusCode = 500;
   res.status(err.statusCode).send(err.message);
 });
+
+
+
+/**
+ * middleware for checking authorization with jwt
+ */
+// function authorized(req, res, next) {
+//   passport.authenticate('jwt', { session: false, }, async (error, token) => {
+//       if (error || !token) {
+//           response.status(401).json({ message: 'Unauthorized' });
+//       } 
+//       try {
+//           const user = await User.findOne({
+//               where: { id: token.id },
+//           });
+//           request.user = user;
+//       } catch (error) {
+//           next(error);
+//       }
+//       next();
+//   })(req, res, next);   
+// }

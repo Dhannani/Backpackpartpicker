@@ -29,7 +29,7 @@ export default class CreateUser extends Component {
   getPacks() {
     let accessString = Cookie.get("JWT")
     console.log(accessString)
-    axios.get('http://localhost:4000/packs/', {headers: {Authorization: 'JWT' + accessString}})
+    axios.get('http://localhost:4000/packs/', {headers: {Authorization: 'JWT ' + accessString}})
         .then((res) => {
             console.log('made it!!')
         }).catch((error) => {
