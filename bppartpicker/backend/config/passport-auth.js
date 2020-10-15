@@ -99,10 +99,10 @@ const opts = {
 passport.use(
   "jwt",
   new JWTstrategy(opts, (jwt_payload, done) => {
+    console.log("in JWT")
     try {
-      console.log("in JWT")
-      User.findOne({
-          username: jwt_payload.id,
+      userSchema.findOne({
+          email: jwt_payload.id,
       }).then((user) => {
         if (user) {
           console.log("user found in db in passport");
