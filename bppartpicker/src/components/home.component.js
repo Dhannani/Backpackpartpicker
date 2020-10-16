@@ -6,11 +6,9 @@ import Cookie from 'js-cookie';
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Wrapper from "./login-wrapper.component"
-import Navbar from "react-bootstrap/esm/Navbar";
 toast.configure();
 
-export default class Login extends Component {
+export default class CreateUser extends Component {
   constructor(props) {
     super(props);
 
@@ -83,37 +81,8 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="form-wrapper">
-        <Navbar bg="dark">
-        <Wrapper/>
-
-        <Form onSubmit={this.onSubmit}>
-          <Form.Group controlId="Email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              value={this.state.email}
-              onChange={this.onChangeUserEmail}
-            />
-          </Form.Group>
-
-          <Form.Group controlId="Name">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="text"
-              value={this.state.password}
-              onChange={this.onChangeUserPassword}
-            />
-          </Form.Group>
-
-          <Button variant="danger" size="lg" block="block" type="submit">
-            Lez Get itttt!
-          </Button>
-        </Form>
-        <Button variant="danger" size="lg" block="block" onClick={this.getPacks}>
-            PAX
-          </Button>
-          </Navbar>
+      <div >
+       
       </div>
     );
   }

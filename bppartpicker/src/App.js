@@ -14,60 +14,24 @@ import CreateUser from "./components/create-user.component";
 import EditUser from "./components/edit-user.component";
 import UserList from "./components/user-list.component";
 import Login from "./components/log-in.component";
+import Home from "./components/home.component";
+import Wrapper from "./components/login-wrapper.component";
+
 const createError = require('http-errors');
-const passport    = require('passport');
+const passport = require('passport');
 
 function App() {
   return (<Router>
     <div className="App">
       <header className="App-header">
-
-        <Navbar bg="light" className="Login">
-          <Container>
-            <Row>
-              <Col>
-                <Row>
-                  <Col>
-                    <Nav className="justify-content-end">
-                      <Nav>
-                        <Link  to={"/create-user"} className="nav-link">
-                          Create User
-                </Link>
-                      </Nav>
-                      <Nav>
-                        <Link to={"/log-in"} className="nav-link">
-                          Log In
-                </Link>
-                      </Nav>
-
-                      <Nav>
-                        <Link to={"/user-list"} className="nav-link">
-                          User List
-                </Link>
-                      </Nav>
-                    </Nav>
-                  </Col>
-                </Row>
-
-                <Row>
-                  <Col>
-                    <Switch>
-                      <Route exact path='/' component={CreateUser} />
-                      <Route path="/create-user" component={CreateUser} />
-                      <Route path="/log-in" component={Login} />
-                      <Route path="/edit-user/:id" component={EditUser} />
-                      <Route path="/user-list" component={UserList} />
-                    </Switch>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
-
-          </Container>
-        </Navbar>
+      <Switch>
+        <Route exact path='/' component={Wrapper} />
+        <Route path="/create-user" component={CreateUser} />
+        <Route path="/log-in" component={Wrapper} />
+        <Route path="/edit-user/:id" component={EditUser} />
+        <Route path="/user-list" component={UserList} />
+      </Switch>
       </header>
-
-
     </div>
   </Router>);
 }
