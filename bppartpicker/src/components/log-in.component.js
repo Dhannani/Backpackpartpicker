@@ -6,7 +6,6 @@ import Cookie from 'js-cookie';
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Wrapper from "./login-wrapper.component"
 import Navbar from "react-bootstrap/esm/Navbar";
 toast.configure();
 
@@ -85,7 +84,6 @@ export default class Login extends Component {
     return (
       <div className="form-wrapper">
         <Navbar bg="dark">
-        <Wrapper/>
 
         <Form onSubmit={this.onSubmit}>
           <Form.Group controlId="Email">

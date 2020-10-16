@@ -5,18 +5,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.css";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import Login from "./log-in.component";
-
-
-const createError = require('http-errors');
-const passport = require('passport');
+import UserNav from "./user-nav.component";
 
 export default class Wrapper extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <Navbar bg="light" className="Login">
@@ -25,12 +17,12 @@ export default class Wrapper extends Component {
                         <Col>
                             <Row>
                                 <Col>
-                                    <Login />
+                                <UserNav />
+                                <Login />
                                 </Col>
                             </Row>
                         </Col>
                     </Row>
-
                 </Container>
             </Navbar>
         )

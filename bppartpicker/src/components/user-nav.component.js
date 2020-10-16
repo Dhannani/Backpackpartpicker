@@ -6,7 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 // import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.css";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 
 // import CreateUser from "./create-user.component";
 // import EditUser from "./edit-user.component";
@@ -14,36 +14,28 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import Login from "./log-in.component";
 // import Home from "./home.component"
 
-const createError = require('http-errors');
-const passport = require('passport');
 
 export default class UserNav extends Component {
  
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
 
                     <Navbar bg="light" className="Login">
 
                         <Nav className="justify-content-end">
                             <Nav>
-                                <Link to={"/create-user"} className="nav-link"> Create User</Link>
+                                <Link to={"/create-user"} className="nav-link"> Create User </Link>
                             </Nav>
                             <Nav>
                                 <Link to={"/log-in"} className="nav-link"> Log In </Link>
                             </Nav>
                             <Nav>
-                                <Link to={"/user-list"} className="nav-link">  User List</Link>
+                                <Link to={"/user-list"} className="nav-link">  User List </Link>
                             </Nav>
                         </Nav>
 
                     </Navbar>
 
-                </header>
-
-
-            </div>
         )
     }
 }
