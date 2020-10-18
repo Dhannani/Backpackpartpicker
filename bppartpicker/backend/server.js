@@ -38,6 +38,7 @@ app.use(
 app.use(cors());
 app.use("/users", userRoute);
 app.use("/packs", authorize, packsRoute);
+app.use("/authorize", authorize);
 
 //FIX THIS LATER
 

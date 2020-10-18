@@ -7,8 +7,9 @@ import "bootstrap/dist/css/bootstrap.css";
 
 import Login from "./log-in.component";
 import UserNav from "./user-nav.component";
+import CreateUser from "./create-user.component";
 
-export default class Wrapper extends Component {
+export default class CreateUserWrapper extends Component {
     render() {
         return (
             <Navbar bg="light" className="Login">
@@ -18,7 +19,7 @@ export default class Wrapper extends Component {
                             <Row>
                                 <Col>
                                 <UserNav />
-                                <Login />
+                                <CreateUser />
                                 </Col>
                             </Row>
                         </Col>

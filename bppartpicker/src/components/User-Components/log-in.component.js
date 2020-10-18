@@ -83,7 +83,6 @@ export default class Login extends Component {
   render() {
     return (
       <div className="form-wrapper">
-        <Navbar bg="dark">
 
         <Form onSubmit={this.onSubmit}>
           <Form.Group controlId="Email">
@@ -107,11 +106,11 @@ export default class Login extends Component {
           <Button variant="danger" size="lg" block="block" type="submit">
             Lez Get itttt!
           </Button>
-        </Form>
-        <Button variant="danger" size="lg" block="block" onClick={this.getPacks}>
+
+          <Button variant="danger" size="lg" block="block" onClick={this.getPacks}>
             PAX
           </Button>
-          </Navbar>
+        </Form>
       </div>
     );
   }

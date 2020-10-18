@@ -6,9 +6,9 @@ import Navbar from "react-bootstrap/Navbar";
 // import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.css";
 
-import { BrowserRouter as Link } from "react-router-dom";
+import { BrowserRouter as Route, Link } from "react-router-dom";
 
-// import CreateUser from "./create-user.component";
+import CreateUser from "./create-user.component";
 // import EditUser from "./edit-user.component";
 // import UserList from "./user-list.component";
 // import Login from "./log-in.component";
@@ -30,11 +30,11 @@ export default class UserNav extends Component {
                                 <Link to={"/log-in"} className="nav-link"> Log In </Link>
                             </Nav>
                             <Nav>
-                                <Link to={"/user-list"} className="nav-link">  User List </Link>
+                                <Link to={"/user-list"} className="nav-link"> User List </Link>
                             </Nav>
                         </Nav>
-
                     </Navbar>
+                    
 
         )
     }
