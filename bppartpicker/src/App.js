@@ -16,7 +16,8 @@ import UserList from "./components/User-Components/user-list.component";
 import LoginWrapper from "./components/User-Components/login-wrapper.component";
 import CreateUserWrapper from "./components/User-Components/create-user-wrapper.component";
 import Packs from "./components/Main-Components/packs.component";
-import Navbar from "./components/Main-Components/navbar.component"
+import Navbar from "./components/Main-Components/navbar.component";
+import Home from "./components/Main-Components/home.component"
 
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
       <header className="App-header">
         
         <Switch>
-          <Route exact path='/' component={Packs} />
+          <Route exact path='/' component={Home} />
+          <Route path="/packs" component={Packs} />
           <Route path="/create-user" component={CreateUserWrapper} />
           <Route path="/log-in" component={LoginWrapper} />
           <Route path="/edit-user/:id" component={EditUser} />
