@@ -19,25 +19,13 @@ import Packs from "./components/Main-Components/packs.component";
 import Navbar from "./components/Main-Components/navbar.component";
 import Home from "./components/Main-Components/home.component"
 
+import Controller from "./components/controller.component"
+
 
 function App() {
   console.log("new page")
-  return (<Router>
-    
-    <Navbar />
-    <div className="App">
-      <header className="App-header">
-        
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path="/packs" component={Packs} />
-          <Route path="/create-user" component={CreateUserWrapper} />
-          <Route path="/log-in" component={LoginWrapper} />
-          <Route path="/edit-user/:id" component={EditUser} />
-          <Route path="/user-list" component={UserList} />
-        </Switch>
-      </header>
-    </div>
-  </Router>);
+  return (
+    <Controller />
+  );
 }
 export default App;

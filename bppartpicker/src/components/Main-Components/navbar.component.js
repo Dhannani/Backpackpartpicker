@@ -11,50 +11,25 @@ export default class NavBar extends Component {
   constructor(props) {
     super(props);
 
-    this.isloggedin = this.isloggedin.bind(this);
+    //this.isloggedin = this.isloggedin.bind(this);
     this.logout = this.logout.bind(this);
 
-    this.state = {loggedIn: false}
    
   }
 
   componentDidMount() {
-        this.isloggedin()
+        this.props.isloggedin()
   }
 
 
 
-  isloggedin() {
-    let accessString = Cookie.get("JWT");
-    console.log(accessString);
-    axios
-      .get("http://localhost:4000/packs/", {
-        headers: { Authorization: "JWT " + accessString },
-      })
-      .then((res) => {
-        if(!this.loggedIn) {
-            console.log("setting state")
-            this.setState({loggedIn: true});
-        }
-        console.log("logged in");
-        return true;
-      })
-      .catch((error) => {
-        if(this.loggedIn) {
-            console.log("setting state")
-            this.setState({loggedIn: false});
-        }
-        console.log("not logged in");
-        return false;
-      });
-    return false;
-  }
+ 
 
   logout() {
     Cookie.set("JWT", "");
     console.log("logging out...")
     window.location.reload(false)
-    this.isloggedin()
+    this.props.isloggedin()
   }
 
   render() {
@@ -99,7 +74,7 @@ export default class NavBar extends Component {
               </a>
             </li>
           </ul>
-          {!this.state.loggedIn ? (
+          {!this.props.loggedIn ? (
             <Link to={"/log-in"} className="nav-link">
                 Login
             </Link>

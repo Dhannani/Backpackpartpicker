@@ -70,7 +70,7 @@ app.use(function (err, req, res, next) {
  */
 function authorize(req, res, next) {
   console.log("in authorized");
-  passport.authenticate("jwt", { session: false }, async (error, token) => {
+  passport.authenticate("jwt", { session: false  }, async (error, token) => {
     console.log("still in authorized");
     if (error || !token) {
       console.log("unauthorized");

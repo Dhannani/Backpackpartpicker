@@ -16,7 +16,8 @@ toast.configure();
 
 
 
-export default class Login extends Component {
+class Login extends Component {
+  
   constructor(props) {
     super(props);
 
@@ -35,9 +36,6 @@ export default class Login extends Component {
     };
   }
 
-  componentDidMount() {
-    this.isloggedin()
-}
 
   getPacks() {
     let accessString = Cookie.get("JWT")
@@ -62,7 +60,7 @@ export default class Login extends Component {
   onChangeUserPassword(e) {
     this.setState({ password: e.target.value });
   }
-
+  handleDelete = () => {this.props.isloggedin()}
   onSubmit(e) {
     e.preventDefault();
     console.log("logging in...")
@@ -73,7 +71,7 @@ export default class Login extends Component {
     };
     axios
       .get("http://localhost:4000/users/log-in", { params: userObject })
-      .then(function (res) {
+      .then(res => {
         console.log(res.status)
         if (res.status === 200) {
           console.log("Successful login!")
@@ -83,8 +81,7 @@ export default class Login extends Component {
             position: toast.POSITION.BOTTOM_CENTER,
             hideProgressBar: true,
           })
-          this.setState({loggedIn: true})
-
+          window.location.reload(false);
         }
         else {
           toast.warning(res.data.message, {
@@ -92,14 +89,17 @@ export default class Login extends Component {
             hideProgressBar: true,
           })
         }
+        
       });
     this.setState({ username: "", email: "", password: "" });
   }
 
   render() {
+    if(this.props.loggedIn) {
+      this.props.history.push("/packs")
+    }
     return (
       <div className="form-wrapper">
-
         <Form onSubmit={this.onSubmit}>
           <Form.Group controlId="Email">
             <Form.Label>Email</Form.Label>
@@ -131,3 +131,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default withRouter(Login)
