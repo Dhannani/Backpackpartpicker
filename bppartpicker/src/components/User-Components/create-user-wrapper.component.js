@@ -9,8 +9,17 @@ import Login from "./log-in.component";
 import UserNav from "./user-nav.component";
 import CreateUser from "./create-user.component";
 
-export default class CreateUserWrapper extends Component {
+import {BrowserRouter as Redirect, withRouter} from 'react-router-dom';
+
+class CreateUserWrapper extends Component {
+    constructor(props) {
+        super(props)
+    }
+
     render() {
+        if(this.props.loggedIn) {
+            this.props.history.push("/packs")
+          }
         return (
             <Navbar bg="light" className="Login">
                 <Container>
@@ -29,3 +38,4 @@ export default class CreateUserWrapper extends Component {
         )
     }
 }
+export default withRouter(CreateUserWrapper)

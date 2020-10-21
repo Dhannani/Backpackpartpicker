@@ -65,7 +65,7 @@ export default class Controller extends Component {
                 <Switch>
                   <Route exact path='/' component={Home} />
                   <Route exact path="/packs" component={Packs} />
-                  <Route path="/create-user" component={CreateUserWrapper} />
+                  <Route path="/create-user" component={() => <CreateUserWrapper loggedIn={this.state.loggedIn} isloggedin={this.isloggedin}/>} />
                   <Route path="/log-in" component={() => <LoginWrapper loggedIn={this.state.loggedIn} isloggedin={this.isloggedin}/>} />
                   <Route path="/edit-user/:id" component={EditUser} />
                   <Route path="/user-list" component={UserList} />

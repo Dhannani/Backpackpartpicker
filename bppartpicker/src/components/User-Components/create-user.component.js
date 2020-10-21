@@ -3,7 +3,9 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
-export default class CreateUser extends Component {
+import {BrowserRouter as Redirect, withRouter} from 'react-router-dom';
+
+class CreateUser extends Component {
 
   constructor(props) {
     super(props)
@@ -74,3 +76,4 @@ export default class CreateUser extends Component {
     </div>);
   }
 }
+export default withRouter(CreateUser);
