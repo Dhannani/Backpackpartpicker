@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.css";
 import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
 import Cookie from "js-cookie";
 import axios from "axios";
 
@@ -14,9 +10,18 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 export default class NavBar extends Component {
   constructor(props) {
     super(props);
-    this.loggedIn = this.isloggedin()
+
+    this.isloggedin = this.isloggedin.bind(this);
+    this.logout = this.logout.bind(this);
+
+    this.state = {loggedIn: false}
    
   }
+
+  componentDidMount() {
+        this.isloggedin()
+  }
+
 
 
   isloggedin() {
@@ -27,10 +32,18 @@ export default class NavBar extends Component {
         headers: { Authorization: "JWT " + accessString },
       })
       .then((res) => {
+        if(!this.loggedIn) {
+            console.log("setting state")
+            this.setState({loggedIn: true});
+        }
         console.log("logged in");
         return true;
       })
       .catch((error) => {
+        if(this.loggedIn) {
+            console.log("setting state")
+            this.setState({loggedIn: false});
+        }
         console.log("not logged in");
         return false;
       });
@@ -39,6 +52,9 @@ export default class NavBar extends Component {
 
   logout() {
     Cookie.set("JWT", "");
+    console.log("logging out...")
+    window.location.reload(false)
+    this.isloggedin()
   }
 
   render() {
@@ -83,9 +99,9 @@ export default class NavBar extends Component {
               </a>
             </li>
           </ul>
-          {!this.isloggedin() ? (
+          {!this.state.loggedIn ? (
             <Link to={"/log-in"} className="nav-link">
-              Login
+                Login
             </Link>
           ) : (
             <button

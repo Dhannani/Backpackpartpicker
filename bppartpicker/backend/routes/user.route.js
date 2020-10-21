@@ -76,11 +76,14 @@ router.route("/log-in").get((req, res, next) => {
   passport.authenticate('login', (err, user, info) => {
     if (err) {
       console.log(err);
+      res.status(401).send(err)
     }
-    if (!user) {
+    else if (!user) {
+      console.log("no user")
       console.log(info.message);
-      res.send(info.message);
+      res.status(201).send({message: info.message});
     } else {
+      console.log("good credentials")
       req.logIn(user, err => {
         userSchema.findOne({
             email: user.email,

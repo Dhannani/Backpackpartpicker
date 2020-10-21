@@ -7,7 +7,14 @@ import Cookie from 'js-cookie';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "react-bootstrap/esm/Navbar";
+
+import {BrowserRouter as Redirect, withRouter} from 'react-router-dom';
+
+
+
 toast.configure();
+
+
 
 export default class Login extends Component {
   constructor(props) {
@@ -24,8 +31,13 @@ export default class Login extends Component {
       username: "",
       email: "",
       password: "",
+      loggedIn: false
     };
   }
+
+  componentDidMount() {
+    this.isloggedin()
+}
 
   getPacks() {
     let accessString = Cookie.get("JWT")
@@ -37,6 +49,7 @@ export default class Login extends Component {
             console.log(error)
         })
 }
+
 
   onChangeUserName(e) {
     this.setState({ username: e.target.value });
@@ -61,17 +74,20 @@ export default class Login extends Component {
     axios
       .get("http://localhost:4000/users/log-in", { params: userObject })
       .then(function (res) {
+        console.log(res.status)
         if (res.status === 200) {
-          console.log("Successful login")
+          console.log("Successful login!")
           console.log(res.data)
           Cookie.set("JWT", res.data.token)
           toast.success(res.data.message, {
             position: toast.POSITION.BOTTOM_CENTER,
             hideProgressBar: true,
           })
+          this.setState({loggedIn: true})
+
         }
         else {
-          toast.warning(res.data, {
+          toast.warning(res.data.message, {
             position: toast.POSITION.BOTTOM_CENTER,
             hideProgressBar: true,
           })

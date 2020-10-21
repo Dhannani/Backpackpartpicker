@@ -75,7 +75,7 @@ passport.use(
           } else {
             bcrypt.compare(password, user.password).then((response) => {
               if (response !== true) {
-                console.log("passwords do not match");
+                console.log("passwords do not match!!");
                 return done(null, false, { message: "passwords do not match" });
               }
               console.log("user found & authenticated");
