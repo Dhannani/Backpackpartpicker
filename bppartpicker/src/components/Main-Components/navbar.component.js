@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import Navbar from "react-bootstrap/Navbar";
 import "bootstrap/dist/css/bootstrap.css";
 import Nav from "react-bootstrap/Nav";
 import Cookie from "js-cookie";
-import axios from "axios";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 
 export default class NavBar extends Component {
   constructor(props) {
@@ -14,11 +12,10 @@ export default class NavBar extends Component {
     //this.isloggedin = this.isloggedin.bind(this);
     this.logout = this.logout.bind(this);
 
-   
   }
 
   componentDidMount() {
-        this.props.isloggedin()
+        //this.props.isloggedin()
   }
 
 

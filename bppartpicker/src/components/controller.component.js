@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.css";
 import "../App.css";
 import axios from "axios";
 import Cookie from 'js-cookie';
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import EditUser from "./User-Components/edit-user.component";
 import UserList from "./User-Components/user-list.component";
@@ -24,6 +21,10 @@ export default class Controller extends Component {
         this.isloggedin = this.isloggedin.bind(this);
         this.state = {loggedIn: false}
 
+    }
+
+    componentDidMount() {
+        this.isloggedin()
     }
 
 
