@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Nav from "react-bootstrap/Nav";
 import Cookie from "js-cookie";
 
-import { BrowserRouter as Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 export default class NavBar extends Component {
   constructor(props) {

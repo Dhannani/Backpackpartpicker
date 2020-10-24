@@ -10,7 +10,7 @@ import EditUser from "./User-Components/edit-user.component";
 import UserList from "./User-Components/user-list.component";
 import LoginWrapper from "./User-Components/login-wrapper.component";
 import CreateUserWrapper from "./User-Components/create-user-wrapper.component";
-import Packs from "./Main-Components/packs.component";
+import Packs from "./Packs-Components/packs.component";
 import Navbar from "./Main-Components/navbar.component";
 import Home from "./Main-Components/home.component";
 
