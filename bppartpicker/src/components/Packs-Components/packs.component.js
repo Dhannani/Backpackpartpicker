@@ -26,16 +26,17 @@ export default class Packs extends Component {
         // const list = ;
         this.state = {
             locker: false,
+            offset: 3,
             categories: ["Backpack", "Shelter", "Sleep System"]
         }
     }
 
     changeLockerState() {
         if (this.state.locker) {
-            this.setState({ locker: false })
+            this.setState({ locker: false, offset: 2 })
         }
         else {
-            this.setState({ locker: true })
+            this.setState({ locker: true, offset: 1 })
         }
     }
 
@@ -57,9 +58,11 @@ export default class Packs extends Component {
                             <Col sm={2} md={2} lg={2}>
                                 <Locker />
                             </Col>}
-                        {!this.state.locker && <Col sm={1} md={1} lg={1}> <div></div></Col>}
-                        <Container>
-                        <Col sm={10} md={10} lg={10}>
+                        {!this.state.locker && 
+                        <Col sm={1} md={1} lg={1}>
+                             <div></div>
+                             </Col>}
+                        <Col sm={{ span: 6, offset: this.state.offset }} md={{ span: 6, offset: this.state.offset }} lg={{ span: 6, offset: this.state.offset }}>
                             <Row>
                                 <Col sm={1} md={1} lg={1}>
                                     <Button onClick={this.changeLockerState} sm={1} md={1} lg={1} variant="light "><LayoutSidebar /></Button>
@@ -76,7 +79,6 @@ export default class Packs extends Component {
 
 
                         </Col>
-                        </Container>
                     </Row>
                 </Container>
             </div>

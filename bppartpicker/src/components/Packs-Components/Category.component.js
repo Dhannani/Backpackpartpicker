@@ -16,12 +16,13 @@ export default class Category extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            sample: "Select Category"
+            selected: "Select Category",
+            suggestedSubCats:{"Shelter":["Tent","Hammock","Bivvy"],"Backpack":[" "], "Sleep System":["Top Quilt","Sleeping Bag","Sleeping Pad"]}
         }
     }
 
     displaySelect(item){
-        this.setState({sample:item});
+        this.setState({selected:item});
     }
 
     render() {
@@ -29,7 +30,7 @@ export default class Category extends Component {
             <div >
                 <Card className="CategoryCard">
                     <Card.Body>
-                        <DropdownButton id="dropdown-basic-button" title={this.state.sample}>
+                        <DropdownButton id="dropdown-basic-button" title={this.state.selected}>
                             {this.props.categories.map((category, index) =>
                                 <div>
                                     <Dropdown.Item onSelect={() => this.displaySelect(category)}>{category}</Dropdown.Item>
@@ -37,7 +38,7 @@ export default class Category extends Component {
                             )}
                         </DropdownButton>
                         <Card.Text></Card.Text>
-                        <SubCat title="subcategory" />
+                        <SubCat SubCats={this.state.suggestedSubCats[this.state.selected]} />
                     </Card.Body>
                 </Card>
             </div>

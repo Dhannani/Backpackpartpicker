@@ -7,6 +7,8 @@ import Card from "react-bootstrap/Card";
 import "bootstrap/dist/css/bootstrap.css";
 import Button from "react-bootstrap/Button";
 import Stats from "./Stats.component"
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
 
 
@@ -16,18 +18,34 @@ export default class Category extends Component {
         super(props)
         // Setting up state
         this.state = {
-          sample:"sample"
+            sample: "sample",
+            selected: "Select Category"
         }
-      }
+    }
+
+    displaySelect(item){
+        this.setState({selected:item});
+    }
 
     render() {
         return (
             <div>
-                <Card className="SubCategoryCard">
-                    <Card.Body>
-                        <Card.Text>{this.props.title}</Card.Text>
-                    </Card.Body>
-                </Card>
+                {this.props.SubCats &&
+                    <div>
+                        <Card>
+                                <Card.Body>
+                                    <Card.Text>{this.state.selected}</Card.Text>
+                                    <DropdownButton id="dropdown-basic-button" title={this.state.selected}>
+                                        {this.props.SubCats.map((subcategory, index) =>
+                                            <div>
+                                                <Dropdown.Item onSelect={() => this.displaySelect(subcategory)}>{subcategory}</Dropdown.Item>
+                                            </div>
+                                        )}
+                                    </DropdownButton>
+                                </Card.Body>
+                         </Card>
+
+                    </div>}
             </div>
 
         )
