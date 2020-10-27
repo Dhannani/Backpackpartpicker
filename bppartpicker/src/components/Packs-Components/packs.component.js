@@ -58,6 +58,7 @@ export default class Packs extends Component {
                                 <Locker />
                             </Col>}
                         {!this.state.locker && <Col sm={1} md={1} lg={1}> <div></div></Col>}
+                        <Container>
                         <Col sm={10} md={10} lg={10}>
                             <Row>
                                 <Col sm={1} md={1} lg={1}>
@@ -75,6 +76,7 @@ export default class Packs extends Component {
 
 
                         </Col>
+                        </Container>
                     </Row>
                 </Container>
             </div>
