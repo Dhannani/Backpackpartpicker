@@ -20,45 +20,64 @@ export default class Packs extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { locker: false }
-        this.changeLockerState=this.changeLockerState.bind(this);
+
+        this.changeLockerState = this.changeLockerState.bind(this);
+        this.addCategory = this.addCategory.bind(this);
+        // const list = ;
+        this.state = {
+            locker: false,
+            categories: ["Backpack", "Shelter", "Sleep System"]
+        }
     }
 
-    changeLockerState () {
-        if(this.state.locker) {
-            this.setState({locker: false})
+    changeLockerState() {
+        if (this.state.locker) {
+            this.setState({ locker: false })
         }
         else {
-            this.setState({locker: true})
+            this.setState({ locker: true })
         }
     }
+
+    addCategory() {
+        var list = this.state.categories.concat("test");
+        this.setState({ categories: list })
+    }
+
 
     render() {
         return (
-            <Container className="packsContainer" fluid='true' >
-                <Row fluid='true'>
-                    {this.state.locker &&
-                        <Col fluid='true' sm={2} md={2} lg={2}>
-                            <Locker />
-                        </Col>}
-                    {!this.state.locker && <Col fluid='true' sm={1} md={1} lg={1}></Col>}
+            <div>
 
-                    <Col sm={10} md={10} lg={10}>
-                        <Row>
-                            <Col sm={1} md={1} lg={1}>
-                                <Button onClick={this.changeLockerState}sm={1} md={1} lg={1} variant="light "><LayoutSidebar /></Button>
-                            </Col >
-                            <Col sm={10} md={10} lg={10}>
-                                <StatsCard />
-                            </Col>
-                        </Row>
 
-                        <Category title="Backpack" />
-                        <Category title="Shelter" />
-                        <Category title="Sleep System" />
-                    </Col>
-                </Row>
-            </Container>
+                <Container className="packsContainer" fluid='true' >
+                    <Row fluid='true'>
+
+                        {this.state.locker &&
+                            <Col sm={2} md={2} lg={2}>
+                                <Locker />
+                            </Col>}
+                        {!this.state.locker && <Col sm={1} md={1} lg={1}> <div></div></Col>}
+                        <Col sm={10} md={10} lg={10}>
+                            <Row>
+                                <Col sm={1} md={1} lg={1}>
+                                    <Button onClick={this.changeLockerState} sm={1} md={1} lg={1} variant="light "><LayoutSidebar /></Button>
+                                </Col >
+                                <Col sm={10} md={10} lg={10}>
+                                    <StatsCard />
+                                </Col>
+                            </Row>
+                            {this.state.categories.map((category, index) =>
+                                <div>
+                                    <Category title={category} categories={this.state.categories} />
+                                </div>)}
+                            <Button onClick={this.addCategory}></Button>
+
+
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
 
         )
     }
