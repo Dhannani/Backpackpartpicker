@@ -24,3 +24,7 @@
 .btn:active {
     outline: none !important;
   }
+.packsContainer{
+    height: 100vh;
+    min-width: 100vw;
+}

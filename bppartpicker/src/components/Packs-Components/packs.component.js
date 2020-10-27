@@ -35,7 +35,7 @@ export default class Packs extends Component {
 
     render() {
         return (
-            <Container fluid='true' >
+            <Container className="packsContainer" fluid='true' >
                 <Row fluid='true'>
                     {this.state.locker &&
                         <Col fluid='true' sm={2} md={2} lg={2}>
