@@ -1,0 +1,17 @@
+.CategoryCard{
+    margin: 1%;
+    padding-right: 0px;
+    background-color:#c9cacafd;
+}
+
+.SubCategoryCard{
+    background-color:#ebebebfd;
+}
+
+.Locker{
+    height: 100vh;
+}
+
+.StatsCard{
+    margin: 1%;
+}

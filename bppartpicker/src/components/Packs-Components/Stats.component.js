@@ -6,17 +6,19 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import "bootstrap/dist/css/bootstrap.css";
 import Button from "react-bootstrap/Button";
+import "./Packs.css"
 
 export default class Stats extends Component {
     render() {
         return (
             <Container fluid="true">
-                <Card fluid="true" >
+                <Card fluid="true" className="StatsCard" >
                     <Card.Body>
                         <Card.Title>Stats Card</Card.Title>
                         <Card.Text>
                             Some quick example text to build on the card title and make up the bulk of
                             the card's content.
+                            GRAPHS!!
     </Card.Text>
                         <Button variant="primary">Go somewhere</Button>
                     </Card.Body>

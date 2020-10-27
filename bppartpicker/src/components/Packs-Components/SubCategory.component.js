@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import "bootstrap/dist/css/bootstrap.css";
 import Button from "react-bootstrap/Button";
-import SubCat from "./SubCategory.component"
+import Stats from "./Stats.component"
 
 
 
@@ -23,11 +23,9 @@ export default class Category extends Component {
     render() {
         return (
             <div>
-                <Card className="CategoryCard">
+                <Card className="SubCategoryCard">
                     <Card.Body>
-                        <Card.Title>{this.props.title}</Card.Title>
-                        <Card.Text></Card.Text>
-                        <SubCat title="subcategory"/>
+                        <Card.Text>{this.props.title}</Card.Text>
                     </Card.Body>
                 </Card>
             </div>
