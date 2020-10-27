@@ -26,7 +26,7 @@ export default class Packs extends Component {
         // const list = ;
         this.state = {
             locker: false,
-            offset: 3,
+            offset: 2,
             categories: ["Backpack", "Shelter", "Sleep System"]
         }
     }
