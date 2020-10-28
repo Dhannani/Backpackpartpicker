@@ -46,3 +46,7 @@
     border: unset;
     border-image-width: 0px;
 }
+
+.lockerToggle{
+    margin-top: 5px;
+}

@@ -65,7 +65,7 @@ export default class Packs extends Component {
                         <Col sm={{ span: 6, offset: this.state.offset }} md={{ span: 6, offset: this.state.offset }} lg={{ span: 6, offset: this.state.offset }}>
                             <Row>
                                 <Col sm={1} md={1} lg={1}>
-                                    <Button onClick={this.changeLockerState} sm={1} md={1} lg={1} variant="light "><LayoutSidebar /></Button>
+                                    <Button className="lockerToggle" onClick={this.changeLockerState} sm={1} md={1} lg={1} variant="light"><LayoutSidebar /></Button>
                                 </Col >
                                 <Col sm={10} md={10} lg={10}>
                                     <StatsCard />

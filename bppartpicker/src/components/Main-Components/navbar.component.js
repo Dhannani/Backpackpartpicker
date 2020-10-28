@@ -67,7 +67,12 @@ export default class NavBar extends Component {
       </li> */}
             <li class="nav-item">
               <a class="nav-link disabled" href="#">
-                Disabled
+                Brows Packs
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">
+                Brows Items
               </a>
             </li>
           </ul>
