@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import "bootstrap/dist/css/bootstrap.css";
-import Button from "react-bootstrap/Button";
+import Table from "react-bootstrap/Table";
 import Stats from "./Stats.component"
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
@@ -19,12 +19,12 @@ export default class Category extends Component {
         // Setting up state
         this.state = {
             sample: "sample",
-            selected: "Select Category"
+            selected: "Select Item Type"
         }
     }
 
-    displaySelect(item){
-        this.setState({selected:item});
+    displaySelect(item) {
+        this.setState({ selected: item });
     }
 
     render() {
@@ -33,17 +33,28 @@ export default class Category extends Component {
                 {this.props.SubCats &&
                     <div>
                         <Card>
-                                <Card.Body>
-                                    <Card.Text>{this.state.selected}</Card.Text>
-                                    <DropdownButton id="dropdown-basic-button" title={this.state.selected}>
-                                        {this.props.SubCats.map((subcategory, index) =>
-                                            <div>
-                                                <Dropdown.Item onSelect={() => this.displaySelect(subcategory)}>{subcategory}</Dropdown.Item>
-                                            </div>
-                                        )}
-                                    </DropdownButton>
-                                </Card.Body>
-                         </Card>
+                            {/* <Card.Body> */}
+                                <Table striped bordered hover>
+                                    <thead>
+                                        <tr>
+                                            <th> <DropdownButton id="dropdown-basic-button" variant="transparent" title={this.state.selected}>
+                                                {this.props.SubCats.map((subcategory, index) =>
+                                                    <div>
+                                                        <Dropdown.Item onSelect={() => this.displaySelect(subcategory)}>{subcategory}</Dropdown.Item>
+                                                    </div>
+                                                )}
+                                            </DropdownButton></th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {/* {this.DataTable()} */}
+                                    </tbody>
+                                </Table>
+
+                            {/* </Card.Body> */}
+                        </Card>
 
                     </div>}
             </div>

@@ -2,10 +2,16 @@
     margin: 1%;
     padding-right: 0px;
     background-color:#c9cacafd;
+    align-items: left;
+    justify-content: left;
+    text-align: left;
 }
 
 .SubCategoryCard{
     background-color:#ebebebfd;
+    align-items: left;
+    justify-content: left;
+    text-align: left;
 }
 
 .Locker{
@@ -27,4 +33,16 @@
 .packsContainer{
      height: 100vh;
     /* min-width: 60vw; */
+    font-size: 10px;
+}
+.card-body{
+    padding: 0%;
+    
+}
+
+.table{
+    margin: 0%;
+    border-width: 0%;
+    border: unset;
+    border-image-width: 0px;
 }
