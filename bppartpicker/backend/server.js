@@ -6,7 +6,8 @@ let dbConfig = require("./database/db");
 let createError = require("http-errors");
 // Express Route
 const userRoute = require("../backend/routes/user.route"),
-  packsRoute = require("../backend/routes/packs.route");
+  packsRoute = require("../backend/routes/packs.route"),
+  testRoute = require("../backend/routes/test.route");
 require("../backend/config/passport-auth");
 let passport = require("passport");
 let userSchema = require("../backend/models/User");
@@ -39,6 +40,7 @@ app.use(cors());
 app.use("/users", userRoute);
 app.use("/packs", authorize, packsRoute);
 app.use("/authorize", authorize);
+app.use("/test", testRoute);
 
 //FIX THIS LATER
 
